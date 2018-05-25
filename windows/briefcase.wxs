@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<?define ProductVersion = "0.0.1" ?>
+<?define ProductUpgradeCode = "83d10492-f891-3f7f-82e6-972efb6ce573" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+   <Product
+            Id="*"
+            UpgradeCode="$(var.ProductUpgradeCode)"
+            Name="bee1"
+            Version="$(var.ProductVersion)"
+            Manufacturer="Wonmoh Lee"
+            Language="1033">
+        <Package
+                InstallerVersion="200"
+                Compressed="yes"
+                Comments="Windows Installer Package"
+        />
+
+        <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
+
+        <Icon Id="ProductIcon" SourceFile="content/app/bee1.ico" />
+
+        <Property Id="ARPPRODUCTICON" Value="ProductIcon" />
+        <Property Id="ARPHELPLINK" Value="https://pybee.org" />
+        <Property Id="ARPURLINFOABOUT" Value="https://pybee.org/about" />
+        <Property Id="ARPNOREPAIR" Value="1" />
+        <Property Id="ARPNOMODIFY" Value="1" />
+
+        <Upgrade Id="$(var.ProductUpgradeCode)">
+            <UpgradeVersion
+                    Minimum="$(var.ProductVersion)"
+                    OnlyDetect="yes"
+                    Property="NEWERVERSIONDETECTED"
+            />
+            <UpgradeVersion
+                    Minimum="0.0.0"
+                    Maximum="$(var.ProductVersion)"
+                    IncludeMinimum="yes"
+                    IncludeMaximum="no"
+                    Property="OLDERVERSIONBEINGUPGRADED"
+            />
+        </Upgrade>
+
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="AppDir" Name="bee1">
+                    <Directory Id="DIR_app" Name="app">
+                        <Directory Id="DIR_app.bee1" Name="bee1">
+                            <Directory Id="DIR_app.bee1.__pycache__" Name="__pycache__">
+                                <Component Id="COMP_d0f049bbde0d4aa1aa8c486b5f55b012" Guid="d0f049bb-de0d-4aa1-aa8c-486b5f55b012">
+                                    <File Id="FILE_9e2b302ac9fe4585a05a0f25c251036d" Source="content/app/bee1/__pycache__/__init__.cpython-36.pyc" />
+                                    <File Id="FILE_f86a75c4483f41c9b9e04a719ff23da8" Source="content/app/bee1/__pycache__/__main__.cpython-36.pyc" />
+                                    <File Id="FILE_aa7b7562ebc845fd9e9741dc57bbf132" Source="content/app/bee1/__pycache__/app.cpython-36.pyc" />
+                                </Component>
+                            </Directory>
+                            <Component Id="COMP_27a9c78247cc463682624eaae445604d" Guid="27a9c782-47cc-4636-8262-4eaae445604d">
+                                <File Id="FILE_33fcef0ae20a4ec59db14cc34afe4b33" Source="content/app/bee1/__init__.py" />
+                                <File Id="FILE_74c59c06c78c43c7836acdce494828d6" Source="content/app/bee1/__main__.py" />
+                                <File Id="FILE_15115d6c3dcb4cc1b4df0d5d10efe93a" Source="content/app/bee1/app.py" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="DIR_app.bee1_0_0_1_dist_info" Name="bee1-0.0.1.dist-info">
+                            <Component Id="COMP_bf57635a309e46a8880024db4448430d" Guid="bf57635a-309e-46a8-8800-24db4448430d">
+                                <File Id="FILE_4f032566a2bc461bb4f643c817d3caa3" Source="content/app/bee1-0.0.1.dist-info/DESCRIPTION.rst" />
+                                <File Id="FILE_e06daa56b8ee4ecbb8b88003ef2c89f8" Source="content/app/bee1-0.0.1.dist-info/INSTALLER" />
+                                <File Id="FILE_6653bd13f6784914b9b703579e4859b2" Source="content/app/bee1-0.0.1.dist-info/METADATA" />
+                                <File Id="FILE_11708f2ba37742debe69a67909ec488c" Source="content/app/bee1-0.0.1.dist-info/metadata.json" />
+                                <File Id="FILE_4074eb9ce89849bc94890a91bc372353" Source="content/app/bee1-0.0.1.dist-info/RECORD" />
+                                <File Id="FILE_dfffc49f666b48c19520748c70785201" Source="content/app/bee1-0.0.1.dist-info/top_level.txt" />
+                                <File Id="FILE_a62a114998da4c87bce06af6422964d4" Source="content/app/bee1-0.0.1.dist-info/WHEEL" />
+                            </Component>
+                        </Directory>
+                        <Component Id="COMP_f7494b756b1e497d878c9267718decfc" Guid="f7494b75-6b1e-497d-878c-9267718decfc">
+                            <File Id="FILE_5ba0692b33154390a8c3614819b10e57" Source="content/app/bee1.ico" />
+                            <File Id="FILE_52fb116fc98b43cbb24250c990848cc9" Source="content/app/README" />
+                            <File Id="FILE_8be9bad83a50418e967dffde5e305f90" Source="content/app/start.py" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="DIR_app_packages" Name="app_packages">
+                        <Component Id="COMP_0d74bde6955542fa8ab6ca9b20f0a769" Guid="0d74bde6-9555-42fa-8ab6-ca9b20f0a769">
+                            <File Id="FILE_06a91c18d8cc4f30b37c89fa29911d8f" Source="content/app_packages/README" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="DIR_python" Name="python">
+                        <Component Id="COMP_b5ea5f52d80a48e290c2901bc2da5db9" Guid="b5ea5f52-d80a-48e2-90c2-901bc2da5db9">
+                            <File Id="FILE_0519db4b04db400998a64818e5b6bc97" Source="content/python/_asyncio.pyd" />
+                            <File Id="FILE_f4a20e86d18444f59b00cfc7634d6148" Source="content/python/_bz2.pyd" />
+                            <File Id="FILE_c9e4e7cbd9894802aaeea510e9fe8603" Source="content/python/_ctypes.pyd" />
+                            <File Id="FILE_7ba100e9db924d5c9ec00f2454276e70" Source="content/python/_decimal.pyd" />
+                            <File Id="FILE_ccec9cea74a343b3b5078de61a79a50c" Source="content/python/_elementtree.pyd" />
+                            <File Id="FILE_fd9abb33fc9648b19d93102989c5c7e0" Source="content/python/_hashlib.pyd" />
+                            <File Id="FILE_278dc487af634f3eba8d8a3a0b0d54df" Source="content/python/_lzma.pyd" />
+                            <File Id="FILE_c22e2c799e0d4552978c1b00b7e45bf3" Source="content/python/_msi.pyd" />
+                            <File Id="FILE_c6cc7207a19d4036a5e557d702ac9669" Source="content/python/_multiprocessing.pyd" />
+                            <File Id="FILE_9021c9413d7e4e33a3d7188da77249a0" Source="content/python/_overlapped.pyd" />
+                            <File Id="FILE_36223e6e79a4413abf108022a450d8d8" Source="content/python/_socket.pyd" />
+                            <File Id="FILE_feba8dcecd7b44d08b95482575815e84" Source="content/python/_sqlite3.pyd" />
+                            <File Id="FILE_8bd4528feabb4e1dafb6ec6677b2d445" Source="content/python/_ssl.pyd" />
+                            <File Id="FILE_d40a72aa8c9b4375aec36c410b9f48c1" Source="content/python/pyexpat.pyd" />
+                            <File Id="FILE_507b1d8b29c1475d99c41d75f2266a82" Source="content/python/python.exe" />
+                            <File Id="FILE_cb9d0e5d6e734c4692ed9c6e17d8aedd" Source="content/python/python3.dll" />
+                            <File Id="FILE_674d540c8ecc4642b6b7c47afb834021" Source="content/python/python36._pth" />
+                            <File Id="FILE_df8cff717af940c784e6bd482e82a240" Source="content/python/python36.dll" />
+                            <File Id="FILE_75a1fbe3f7d74e5d9c2b5129b14cb7bf" Source="content/python/python36.zip" />
+                            <File Id="FILE_2553f532231f41e49b3868f1e20b08d6" Source="content/python/pythonw.exe" />
+                            <File Id="FILE_4c2c5afd9aba419899f79d94ac0dbefc" Source="content/python/select.pyd" />
+                            <File Id="FILE_287e109edbb041e5bb81ddf59e874d96" Source="content/python/sqlite3.dll" />
+                            <File Id="FILE_9b5863859d32421cb713cc2e3f312fe8" Source="content/python/unicodedata.pyd" />
+                            <File Id="FILE_5f31d96ab9d04e85ac8e3b6ab5468893" Source="content/python/vcruntime140.dll" />
+                            <File Id="FILE_53fca33853124238907110299eaba882" Source="content/python/winsound.pyd" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuSubfolder" Name="bee1">
+                    <Component
+                            Id="ApplicationShortcuts"
+                            Guid="12345678-1234-1234-1234-333333333333">
+                        <Shortcut
+                                Id="ApplicationShortcut1"
+                                Name="bee1"
+                                Icon="ProductIcon"
+                                Description="sample toga app"
+                                Target="[DIR_python]\pythonw.exe"
+                                WorkingDirectory="AppDir"
+                                Arguments="app\start.py" />
+                        <RegistryValue
+                                Root="HKCU"
+                                Key="Software\Wonmoh Lee\bee1"
+                                Name="installed"
+                                Type="integer"
+                                Value="1"
+                                KeyPath="yes" />
+                        <RemoveFolder Id="ProgramMenuSubfolder" On="uninstall"/>
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+
+        <InstallExecuteSequence>
+            <RemoveExistingProducts After="InstallValidate"/>
+        </InstallExecuteSequence>
+
+        <Feature Id="DefaultFeature" Level="1">
+            <ComponentRef Id="COMP_d0f049bbde0d4aa1aa8c486b5f55b012"/>
+            <ComponentRef Id="COMP_27a9c78247cc463682624eaae445604d"/>
+            <ComponentRef Id="COMP_bf57635a309e46a8880024db4448430d"/>
+            <ComponentRef Id="COMP_f7494b756b1e497d878c9267718decfc"/>
+            <ComponentRef Id="COMP_0d74bde6955542fa8ab6ca9b20f0a769"/>
+            <ComponentRef Id="COMP_b5ea5f52d80a48e290c2901bc2da5db9"/>
+
+            <ComponentRef Id="ApplicationShortcuts"/>
+        </Feature>
+
+        <UI Id="UserInterface">
+          <Property Id="WIXUI_INSTALLDIR" Value="TARGETDIR" />
+          <Property Id="WixUI_Mode" Value="Custom" />
+
+          <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+          <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="9" Bold="yes" />
+          <TextStyle Id="WixUI_Font_Title"  FaceName="Tahoma" Size="9" Bold="yes" />
+
+          <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+
+          <DialogRef Id="ProgressDlg" />
+          <DialogRef Id="ErrorDlg" />
+          <DialogRef Id="FilesInUse" />
+          <DialogRef Id="FatalError" />
+          <DialogRef Id="UserExit" />
+
+          <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+          <Publish Dialog="WelcomeDlg" Control="Next" Event="EndDialog" Value="Return" Order="2"></Publish>
+
+        </UI>
+
+        <UIRef Id="WixUI_Common" />
+    </Product>
+</Wix>
